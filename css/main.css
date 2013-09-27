@@ -1,0 +1,312 @@
+
+
+.fancybox-skin
+{
+	background-color:#222;
+	border:1px solid;
+}
+html, body
+{
+	overflow:hidden;
+	height:100%;
+	background-color:#183239;
+	padding:0;
+	margin:0;
+}
+
+#page-wrapper
+{
+	overflow:hidden;
+	height:calc(100%);
+	font-family:arial;
+}
+
+#nav-wrapper
+{
+	position:absolute;
+    background-color: #183239;
+    width: 150px;
+	height:100%;
+	border-bottom:5px solid #183239;
+}
+#main-content
+{
+	position:absolute;
+	height:100%;
+	margin-left:150px;
+}
+#main-content-portal {
+    height: 100%;
+    width: 100%;
+	
+}
+#nav
+{
+	list-style:none;
+	padding:0;
+	margin:0;
+	overflow:hidden;
+	margin-bottom:16px;
+	clear:both;
+}
+#nav .list-link-wrapper
+{
+	margin:15px 0;
+    padding: 3px 5px;
+	cursor:pointer;
+}
+
+#nav .list-link-wrapper a
+{
+	color:#fff;
+}
+
+
+#nav .active
+{
+	background-color: #123456;
+    box-shadow:0 0 4px 1px;
+	-moz-box-shadow: 0 0 4px 1px;
+	-webkit-box-shadow: 0 0 4px 1px;
+	border-right:3px solid;
+	border-left:3px solid;
+}
+
+
+
+#nav .link-icon
+{
+	background-position: center;
+    background-repeat: no-repeat;
+	float: left;
+	margin-right: 5px;
+	width: 24px;
+	height:20px;
+	cursor:pointer;
+	margin-bottom:10px;
+}
+
+#nav .list-link-wrapper:nth-child(1) .link-icon
+{
+	background-image: url("../images/reds-icon.png");
+}
+#nav .list-link-wrapper:nth-child(2) .link-icon
+{
+	background-image: url("../images/151-icon.png");
+}
+#nav .list-link-wrapper:nth-child(3) .link-icon
+{
+	background-image: url("../images/xlr8-icon.png");
+}
+#nav .list-link-wrapper:nth-child(4) .link-icon
+{
+	background-image: url("../images/chile-icon.png");
+}
+#nav .list-link-wrapper:nth-child(5) .link-icon
+{
+	background-image: url("../images/wiki-icon.gif");
+}
+#nav .list-link-wrapper:nth-child(6) .link-icon {
+    background-image: url("../images/web-ico.gif");
+}
+#nav .list-link-wrapper:nth-child(7) .link-icon {
+    background-image: url("../images/vent-icon.png");
+}
+#nav .list-link-wrapper:nth-child(8) .link-icon {
+    background-image: url("../images/alice-icon.png");
+}
+
+#button-wrapper
+{
+    height: 33px;
+    margin-top: 13px;
+margin-bottom:10px;
+}
+.button
+{
+    background-image: url("../images/button.png");
+	height: 28px;
+	border: 1px solid #555555;
+	color: #FFFFFF;
+	float: left;
+	margin-left: 14px;
+	cursor:pointer;
+	box-shadow: 1px 2px 2px 0 #000;
+border-radius:25px;
+}
+
+
+#fixed-buttons-container
+{
+    background-color: #43624A;
+    border: 1px solid #116811;
+    border-radius: 0 3px 3px 3px;
+    bottom: 0;
+    height: 30px;
+    left: 0;
+    position: fixed;
+    width: 50px;
+}
+.fixed-button
+{
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    height: 90%;
+    text-align: center;
+    width: 50%;
+}
+.fixed-button:hover
+{
+	background-color:#5F9869;
+	cursor:pointer;
+}
+#to-top-button
+{
+	display:none;
+}
+#hide-button
+{
+	width:100%;
+}
+.fancybox-overlay
+{
+	background:none;
+}
+
+#rcpd-button-inner
+{
+    background-image: url("../images/rcpd-icon.png");
+}
+#upload-button-inner
+{
+	background-image: url("../images/upload-icon.png");
+}
+#settings-button-inner
+{
+	background-image: url("../images/settings-icon.png");
+}
+#about-button-inner
+{
+	background-image: url("../images/about-icon.png");
+	background-size:20px;
+}
+.button-inner
+{
+background-position: center center;
+    background-repeat: no-repeat;
+ 
+border-radius:25px;
+}
+.mobile-containers	
+{ 
+	height: inherit !important; 
+}
+.mobile-fixed-buttons-container 
+{ 
+	width:100px !important; 
+}
+.mobile-to-top-button
+{
+	display:block !important;
+}
+.mobile-hide-button
+{
+	width:50% !important;
+}
+
+@-webkit-keyframes greenPulse {
+from { -webkit-box-shadow: 0 0 20px 2px #00dd00; }
+50% { -webkit-box-shadow: 0 0 80px 0px #00dd00; }
+to { -webkit-box-shadow: 0 0 20px 2px #00dd00; }
+}
+.button:hover{
+-webkit-animation-name: greenPulse;
+-webkit-animation-duration: 2s;
+-webkit-animation-iteration-count: 1;
+	background-image:none !important;
+	background-color:#004900;
+	box-shadow:0 0 20px 2px #00dd00;
+}
+
+@-webkit-keyframes flash {
+from { -webkit-box-shadow: 0 0 4px 1px; background-color: #215d9a; }
+50% { -webkit-box-shadow: 0px 0px 20px 2px #ccc; background-color: #003300; }
+to { -webkit-box-shadow: 0 0 4px 1px; background-color: #215d9a; }
+}
+#code-list
+{
+	clear:both;
+}
+
+
+#nav li:hover
+{
+box-shadow: 0 0 4px 1px;
+	background-color:#215d9a;
+-webkit-animation-name: flash;
+-webkit-animation-duration: 2s;
+-webkit-animation-iteration-count: 1;
+
+}
+.button.extend .button-inner
+{
+font-size:.8em;
+text-decoration:none;
+display:block;
+float:left;
+font-weight: bold;
+}
+
+.button.extend .button-inner:last-child
+{
+    margin: 6px 8px 6px 0;
+}
+.button.extend.single .button-inner
+{
+    margin: 6px 8px;	
+
+}
+.button-inner.icon
+{
+width:20px;
+height:29px;
+margin: 0 4px;
+background-position:center;
+}
+#code-list
+{
+    list-style: none outside none;
+    padding: 0;
+}
+#code-list img
+{
+width:20px;
+height:20px;
+margin-left:5px;
+margin-top:4px;
+cursor:move;
+}
+#code-list span
+{
+    color: #CCCCCC;
+    font-size: 0.8em;
+    margin-left: 3px;
+    position: relative;
+    top: -5px;
+}
+.ui-icon-circle-close
+{
+background-image: url("images/ui-icons_ffffff_256x240.png");
+cursor: pointer;
+    height: 16px;
+    margin-left: 152px;
+    margin-top: -23px;
+    position: absolute;
+    width: 16px;
+    z-index: 99;
+}
+.ui-icon-circle-close:hover
+{
+background-image: url("images/ui-icons_a83300_256x240.png");
+}

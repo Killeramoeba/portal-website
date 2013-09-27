@@ -1,0 +1,19 @@
+h1, h3, p
+{
+	color:#fff;
+}
+#popup-wrapper
+{
+	font-family:arial;
+	color:#fff;
+		padding:15px;
+		text-align: center;
+}
+#submit-wrapper
+{
+    margin: 13px auto 0;
+    width: 140px;
+	    position: relative;
+    top: 20px;
+
+}
