@@ -13,10 +13,8 @@ function selectItem(a){
 	input = $("#addcode input[name='"+img.attr("inputname")+"']");
 	if( img.css("margin") == "1px" ){
 		input.val(img.attr("activevalue"));
-		console.log(input.val());
 	}else if(img.css("margin") == "0px"){
 		input.val(input.attr("defaultvalue"));
-		console.log(input.val());
 	}
 }
 
@@ -25,14 +23,13 @@ function selectMedal(a){
 	input = img.next();
 	if( img.css("margin") == "1px" ){
 		input.val(input.attr("activevalue"));
-		console.log(input.val());
 	}else if(img.css("margin") == "0px"){
 		input.val(input.attr("defaultvalue"));
-		console.log(input.val());
 	}
 }
 </script>
 	<div id="popup-wrapper">
+    	<p>Click anywhere and hold to drag.</p>
     	<form id="addcode">
     	<div class="row-wrapper">
         	
@@ -139,7 +136,7 @@ function selectMedal(a){
             </script>
         </div>
         </form>
-        <div class="row-wrapper last">
+        <div class="row-wrapper last">        	
             <div id="submit-wrapper">
             	<a onclick="processCookie(addCode($('form#addcode').serialize()))" class="button extend single"><span class="button-inner">OK</span></a>
             </div>

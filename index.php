@@ -9,10 +9,10 @@
 <LINK REL="SHORTCUT ICON" HREF="images/web-ico.gif">
 <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css" media="screen" />
 
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.js"></script>
 <script type="text/javascript" src="js/cookies.js"></script>
 <script type="text/javascript" src="code-manager/codes.js"></script>
@@ -256,9 +256,9 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
 		});
 		$(".fancybox-link4").fancybox({
 			minWidth	: 515,
-			minHeight	: 380,
+			minHeight	: 430,
 			maxWidth	: 515,
-			maxHeight	: 380,
+			maxHeight	: 430,
 			fitToView	: false,
 			width		: '100%',
 			height		: '90%',
@@ -271,9 +271,10 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
 				$("#code-adder").html("");				
 			},
 			afterShow : function() {
-				$(".fancybox-overlay.fancybox-overlay-fixed").addClass("addcode")
+				$(".fancybox-overlay.fancybox-overlay-fixed").addClass("addcode").draggable();
 				$(".fancybox-wrap.fancybox-desktop.fancybox-type-ajax.fancybox-opened").attr("onclick", "swapzindex(this);");
-				$("#code-adder").html('<div class="fancybox-overlay fancybox-overlay-fixed rcpd" style="width: auto; height: auto; display: block;"><div onclick="swapzindex(this);" tabindex="-1" class="fancybox-wrap fancybox-desktop fancybox-type-iframe fancybox-opened" style="width: 772px; height: auto; position: absolute; top: 20px; left: 20px; opacity: 1; overflow: visible;"><span style="color: rgb(255, 255, 255); position: absolute; z-index: 99; left: 17px; font-size: 0.7em; cursor: pointer;">Click here to focus</span><div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;"><div class="fancybox-outer"><div class="fancybox-inner" style="overflow: auto; width: 740px; height: 401px;"><iframe  scrolling="auto" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" hspace="0" vspace="0" class="fancybox-iframe" name="fancybox-frame1383379016664" id="fancybox-frame1383379016664" src="http://night.org/swat2/playerdb/"></iframe></div></div><div class="fancybox-title fancybox-title-float-wrap"><span class="child">RCPD Code Manager</span></div><a href="javascript:;" class="fancybox-item" title="Close"></a></div></div></div>');
+				$("#code-adder").html('<div class="draggable fancybox-overlay fancybox-overlay-fixed rcpd" style="width: auto; height: auto; display: block;"><div onclick="swapzindex(this);" tabindex="-1" class="fancybox-wrap fancybox-desktop fancybox-type-iframe fancybox-opened" style="width: 772px; height: auto; position: absolute; top: 20px; left: 20px; opacity: 1; overflow: visible;"><span style="color: rgb(255, 255, 255);position: absolute;z-index: 99;font-size: 1.4em;cursor: pointer;height: 28px;padding: 10px 20px;background-color: #333;border: 1px solid #555;border-radius: 5px;">Click and hold to drag</span><div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;"><div class="fancybox-outer"><div class="fancybox-inner" style="overflow: auto; width: 740px; height: 401px;"><iframe  scrolling="auto" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" hspace="0" vspace="0" class="fancybox-iframe" name="fancybox-frame1383379016664" id="fancybox-frame1383379016664" src="http://night.org/swat2/playerdb/"></iframe></div></div><div class="fancybox-title fancybox-title-float-wrap"><span class="child">RCPD Code Manager</span></div><a href="javascript:;" class="fancybox-item" title="Close"></a></div></div></div>');
+				$( ".draggable" ).draggable();
 			}
 			
 		});
@@ -312,7 +313,6 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
 		if(typeof getCookie("energyisforwimps-rcpdUsername") !== "undefined" && typeof getCookie("energyisforwimps-rcpdPassword") !== "undefined" )	
 		{
 			$("#rcpd-button").prop("href","http://night.org/swat2/playerdb/?user="+getCookie("energyisforwimps-rcpdUsername")+"&pw="+getCookie("energyisforwimps-rcpdPassword"));
-			//console.log("Cookie Set!");	
 		}
 		
 		$( ".sortable" ).sortable({ 
@@ -331,8 +331,7 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
 						j++;
 						if(j!=1){cookieString+="&";}
 						cookieString+= k+"="+v;						
-					});
-					console.log( cookieString );					
+					});				
 					setCookie("energyisforwimps-code"+i,cookieString,365);				
 				});
 				setCookie("energyisforwimps-numCodes", i, 365);			
