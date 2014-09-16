@@ -6,28 +6,28 @@ $codes = array(
 	$order=>array()
 );
 
-$codes[$order]['code']=isset($_POST["code"])?($_POST["code"]):("error");
-$codes[$order]['class']=isset($_POST["class"])?($_POST["class"]):("error");
-$codes[$order]['gun']=isset($_POST["gun"])?($_POST["gun"]):("error");
-$codes[$order]['armor']=isset($_POST["armor"])?($_POST["armor"]):("error");
-$codes[$order]['trait']=isset($_POST["trait"])?($_POST["trait"]):("error");
-$codes[$order]['spec']=isset($_POST["spec"])?($_POST["spec"]):("error");
-$codes[$order]['talent']=isset($_POST["talent"])?($_POST["talent"]):("error");
+$codes[$order]['code']=isset($_POST["code"])&&strlen($_POST["code"])==16?($_POST["code"]):("error");
+$codes[$order]['class']=isset($_POST["class"])&&(strlen($_POST["class"])==1||strlen($_POST["class"])==2)?($_POST["class"]):("error");
+$codes[$order]['gun']=isset($_POST["gun"])&&strlen($_POST["gun"])==1?($_POST["gun"]):("error");
+$codes[$order]['armor']=isset($_POST["armor"])&&strlen($_POST["armor"])==1?($_POST["armor"]):("error");
+$codes[$order]['trait']=isset($_POST["trait"])&&(strlen($_POST["trait"])==1||strlen($_POST["trait"])==2)?($_POST["trait"]):("error");
+$codes[$order]['spec']=isset($_POST["spec"])&&strlen($_POST["spec"])==1?($_POST["spec"]):("error");
+$codes[$order]['talent']=isset($_POST["talent"])&&strlen($_POST["talent"])==1?($_POST["talent"]):("error");
 
-$codes[$order]['medals']['rem'] = isset($_POST["medal0"])?($_POST["medal0"]):("error");
-$codes[$order]['medals']['lsa'] = isset($_POST["medal1"])?($_POST["medal1"]):("error");
-$codes[$order]['medals']['cob'] = isset($_POST["medal2"])?($_POST["medal2"]):("error");
-$codes[$order]['medals']['pcc'] = isset($_POST["medal3"])?($_POST["medal3"]):("error");
-$codes[$order]['medals']['moh'] = isset($_POST["medal4"])?($_POST["medal4"]):("error");
-$codes[$order]['medals']['key'] = isset($_POST["medal5"])?($_POST["medal5"]):("error");
+$codes[$order]['medals']['rem'] = isset($_POST["medal0"])&&strlen($_POST["medal0"])==1?($_POST["medal0"]):("error");
+$codes[$order]['medals']['lsa'] = isset($_POST["medal1"])&&strlen($_POST["medal1"])==1?($_POST["medal1"]):("error");
+$codes[$order]['medals']['cob'] = isset($_POST["medal2"])&&strlen($_POST["medal2"])==1?($_POST["medal2"]):("error");
+$codes[$order]['medals']['pcc'] = isset($_POST["medal3"])&&strlen($_POST["medal3"])==1?($_POST["medal3"]):("error");
+$codes[$order]['medals']['moh'] = isset($_POST["medal4"])&&strlen($_POST["medal4"])==1?($_POST["medal4"]):("error");
+$codes[$order]['medals']['key'] = isset($_POST["medal5"])&&strlen($_POST["medal5"])==1?($_POST["medal5"]):("error");
 
-$codes[$order]['titles']['honorguard'] = isset($_POST["title0"])?($_POST["title0"]):("error");
-$codes[$order]['titles']['nightmare'] = isset($_POST["title1"])?($_POST["title1"]):("error");
-$codes[$order]['titles']['extinction'] = isset($_POST["title2"])?($_POST["title2"]):("error");
-$codes[$order]['titles']['megazilla'] = isset($_POST["title3"])?($_POST["title3"]):("error");
-$codes[$order]['titles']['deathless'] = isset($_POST["title4"])?($_POST["title4"]):("error");
-$codes[$order]['titles']['impressive'] = isset($_POST["title5"])?($_POST["title5"]):("error");
-$codes[$order]['titles']['solo'] = isset($_POST["title6"])?($_POST["title6"]):("error");
+$codes[$order]['titles']['honorguard'] = isset($_POST["title0"])&&strlen($_POST["title0"])==1?($_POST["title0"]):("error");
+$codes[$order]['titles']['nightmare'] = isset($_POST["title1"])&&strlen($_POST["title1"])==1?($_POST["title1"]):("error");
+$codes[$order]['titles']['extinction'] = isset($_POST["title2"])&&strlen($_POST["title2"])==1?($_POST["title2"]):("error");
+$codes[$order]['titles']['megazilla'] = isset($_POST["title3"])&&strlen($_POST["title3"])==1?($_POST["title3"]):("error");
+$codes[$order]['titles']['deathless'] = isset($_POST["title4"])&&strlen($_POST["title4"])==1?($_POST["title4"]):("error");
+$codes[$order]['titles']['impressive'] = isset($_POST["title5"])&&strlen($_POST["title5"])==1?($_POST["title5"]):("error");
+$codes[$order]['titles']['solo'] = isset($_POST["title6"])&&strlen($_POST["title6"])==1?($_POST["title6"]):("error");
 
 /*
 $codes = array(
