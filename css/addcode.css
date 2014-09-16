@@ -1,0 +1,136 @@
+/* CSS Document */
+
+#links
+{
+	overflow:hidden;
+}
+#left-side
+{
+	overflow:hidden;
+		float:right;
+}
+.row-wrapper
+{
+	overflow:hidden;
+	width:325px;
+}
+.traitContainer {
+    overflow: hidden;
+    float: left;
+    border: 3px solid #00F;
+}
+.button a
+{
+  display:block;
+  height:20px;
+  width:128px;
+}
+body
+{
+	background-color:#000;
+}
+#header
+{
+	color:#FC0;
+	font:bold 1em Arial;
+	font-size: 18px;
+}
+#outer
+{
+	width:480px;
+}
+.text
+{
+	color:#FC0;
+	font:bold 1em Arial;
+	font-size:14px;
+	margin:5px 0 0;
+}
+.itemRow
+{
+	width:145px;
+	margin:5px;
+	float:left;
+	overflow:hidden;
+}
+.lastSection
+{
+	float:left;
+	width:480px;
+}
+.img
+{
+	float:left;
+	margin:1px;
+	border-style:none;
+}
+#textBox
+{
+	color:#FFF;
+	font:normal 1em Arial;
+}
+#top
+{
+	height: 20px;
+}
+#code
+{
+	color:#FFF;
+}
+.row-wrapper {
+    width: auto;
+}
+.img
+{
+	height:31px;
+}
+#submit-wrapper 
+{
+	top:0;
+}
+
+#popup-wrapper
+{
+	background-color:#000;
+	padding-bottom: 54px;
+}
+.row-wrapper a
+{
+	display: block;
+    float: left;
+    height: 33px;
+}
+.row-wrapper.last
+{
+	overflow:visible;
+}
+.row-wrapper.last a
+{
+	height:28px;
+}
+.itemRow
+{
+	padding-bottom: 2px;
+}
+#submit-wrapper
+{
+	width:62px;
+}
+#code-input
+{
+	margin-top:8px;
+	width: 134px;
+}
+#medal
+{
+	margin-top:10px;
+	height:20px;
+}
+#title
+{
+	height:20px;
+}
+.row-wrapper img
+{
+	margin:1px;
+}

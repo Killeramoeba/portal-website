@@ -279,34 +279,105 @@ background-position:center;
     list-style: none outside none;
     padding: 0;
 }
-#code-list img
+#code-list .specs, #code-list .class-portrait
 {
 width:20px;
 height:20px;
-margin-left:5px;
+margin-left:3px;
 margin-top:4px;
-cursor:move;
+
+}
+#code-list .class-portrait
+{
+	margin-left:7px;
+}
+#code-list .class-portrait
+{
+	cursor:move;
 }
 #code-list span
 {
     color: #CCCCCC;
     font-size: 0.8em;
-    margin-left: 3px;
-    position: relative;
-    top: -5px;
+	margin-top:4px;
+	text-align:center;
+	display:block;
+	margin-bottom:2px;
 }
-.ui-icon-circle-close
+#code-list .class-info
 {
-background-image: url("images/ui-icons_ffffff_256x240.png");
-cursor: pointer;
-    height: 16px;
-    margin-left: 152px;
-    margin-top: -23px;
+	margin-left: 150px;
+    margin-top: -29px;
     position: absolute;
-    width: 16px;
-    z-index: 99;
+	    z-index: 99;
+		width:130px;
+		background-color:#333;
+		border-left:0 none;
+		display:none;
+		padding:3px;
 }
-.ui-icon-circle-close:hover
+#code-list .class-info.hover
 {
-background-image: url("images/ui-icons_a83300_256x240.png");
+	display:block;
+}
+#code-list img.medals
+{
+	margin-right:2px;
+	float:left;
+}
+#code-list .medals:last-child
+{
+	margin-right:0;
+}
+#code-list img.titles
+{
+	margin-right:2px;
+	float:left;
+}
+#code-list .titles:last-child
+{
+	margin-right:0;
+}
+#code-list li:hover
+{
+	background-color:#333;
+	color:#000;
+}
+#code-list .class-info .class-info-inner.medals
+{
+	margin: auto;
+    width: 100px;
+}
+#code-list .class-info .class-info-inner.titles
+{
+    margin: auto;
+    width: 68px;
+	
+}
+.class-info .ui-icon-circle-close
+{
+background-image: url("images/delete-grey.png");
+cursor: pointer;
+height: 22px;
+width: 22px;
+margin-left: 118px;
+margin-top: -33px;
+position: absolute;
+background-position: 0 0;
+border: 1px solid #888;
+background-repeat: no-repeat;
+border-radius: 10px;
+}
+.class-info .ui-icon-circle-close:hover
+{
+background-image: url("images/delete-red.png");
+
+}
+.fancybox-overlay
+{
+	visibility:hidden;
+}
+.fancybox-opened
+{
+	visibility:visible;
 }

@@ -1,18 +1,31 @@
 //This function is called when an <a> tag is clicked
-//A border will be removed if it exists. Otherwise, it will be removed. 
+//A border will be removed if it exists. Otherwise, it will be added. 
 function chooseItem(property,index)
 {
-	
-	if($("#"+property+" > a > div:eq("+index+")").css('border-left-style') == "solid")
+	if(property != "medal" && property != "title")
 	{
-		$("#"+property+" > a > div:eq("+index+")").css("border-style", "none").css("margin","1px");
+	
+		if($("#"+property+" > a > div:eq("+index+") > img").css('border-left-style') == "solid")
+		{
+			$("#"+property+" > a > div:eq("+index+") > img").css("border-style", "none").css("margin","1px");
+		}
+		else
+		{
+			$("#"+property+" > a > div > img").css("border-style", "none").css("margin","1px");
+			$("#"+property+" > a > div:eq("+index+") > img").css("border-style", "solid").css("border-width", "1px").css("border-color","yellow").css("margin","0px");
+		}
 	}
 	else
 	{
-		$("#"+property+" > a > div").css("border-style", "none").css("margin","1px");
-		$("#"+property+" > a > div:eq("+index+")").css("border-style", "solid").css("border-width", "1px").css("border-color","yellow").css("margin","0px");
+		if($("#"+property+" > a > div:eq("+index+") > img").css('border-left-style') == "solid")
+		{
+			$("#"+property+" > a > div:eq("+index+") > img").css("border-style", "none").css("margin","1px");
+		}
+		else
+		{
+			$("#"+property+" > a > div:eq("+index+") > img").css("border-style", "solid").css("border-width", "1px").css("border-color","yellow").css("margin","0px");
+		}
 	}
-	
 }
 
 //When the sumbit button is pressed all of the values selected
@@ -34,7 +47,7 @@ function getUserInput()
 	var i = 0;
 	while(i<12)
 	{
-		if($("#class > a > div:eq("+i+")").css('border-left-style') == "solid")
+		if($("#class > a > div:eq("+i+") > img").css('border-left-style') == "solid")
 		{
 			desiredClass = i;
 			break;
@@ -48,7 +61,7 @@ function getUserInput()
 	i = 0;
 	while(i<8)
 	{
-		if($("#gun > a > div:eq("+i+")").css('border-left-style') == "solid")
+		if($("#gun > a > div:eq("+i+") > img").css('border-left-style') == "solid")
 		{
 			desiredGun = i;
 			break;
@@ -62,7 +75,7 @@ function getUserInput()
 	i = 0;
 	while(i<5)
 	{
-		if($("#armor > a > div:eq("+i+")").css('border-left-style') == "solid")
+		if($("#armor > a > div:eq("+i+") > img").css('border-left-style') == "solid")
 		{
 			desiredArmor = i;
 			break;
@@ -76,7 +89,7 @@ function getUserInput()
 	i = 0;
 	while(i<17)
 	{
-		if($("#trait > a > div:eq("+i+")").css('border-left-style') == "solid")
+		if($("#trait > a > div:eq("+i+") > img").css('border-left-style') == "solid")
 		{
 			traitStart = i;
 			break;
@@ -90,7 +103,7 @@ function getUserInput()
 	i = 0;
 	while(i<17)
 	{
-		if($("#trait2 > a > div:eq("+i+")").css('border-left-style') == "solid")
+		if($("#trait2 > a > div:eq("+i+") > img").css('border-left-style') == "solid")
 		{
 			traitEnd = i;
 			break;
@@ -104,7 +117,7 @@ function getUserInput()
 	i = 0;
 	while(i<10)
 	{
-		if($("#spec > a > div:eq("+i+")").css('border-left-style') == "solid")
+		if($("#spec > a > div:eq("+i+") > img").css('border-left-style') == "solid")
 		{
 			specStart = i;
 			break;
@@ -118,7 +131,7 @@ function getUserInput()
 		i = 0;
 	while(i<10)
 	{
-		if($("#spec2 > a > div:eq("+i+")").css('border-left-style') == "solid")
+		if($("#spec2 > a > div:eq("+i+") > img").css('border-left-style') == "solid")
 		{
 			specEnd = i;
 			break;
@@ -132,7 +145,7 @@ function getUserInput()
 	i = 0;
 	while(i<8)
 	{
-		if($("#talent > a > div:eq("+i+")").css('border-left-style') == "solid")
+		if($("#talent > a > div:eq("+i+") > img").css('border-left-style') == "solid")
 		{
 			desiredTalent = i;
 			break;
@@ -154,3 +167,6 @@ function getUserInput()
 	}
 	
 }
+
+
+

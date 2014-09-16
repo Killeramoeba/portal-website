@@ -13,28 +13,16 @@
 
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
-<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.js"></script>
 <script type="text/javascript" src="js/cookies.js"></script>
+<script type="text/javascript" src="code-manager/codes.js"></script>
+<script type="text/javascript" src="js/build.js"></script>
+
 <?php
-if(isset($_GET["page"]))
-$page = $_GET["page"];
-else
-$page = 1;
-
-if(isset($_GET["box"]))
-$box = $_GET["box"];
-else
-$box = 0;
-
-if(isset($_GET["hidden"]))
-$hidden = $_GET["hidden"];
-else
-$hidden = 0;
+$page = isset($_GET["page"])? $_GET["page"]:1;
+$box = isset($_GET["box"])? $_GET["box"]:0;
+$hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
 ?>
-
-
-
-
 <script>
 	var isMobile = {
 		Android: function() {
@@ -56,10 +44,6 @@ $hidden = 0;
 			return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
 		}
 	};
-	
-
-
-
 
 	//grab back end vars
 	var defaultPage = <?=$page?>;
@@ -115,7 +99,7 @@ $hidden = 0;
 	
 	
 	function changeURL(url)
-	{		
+	{
 		window.history.replaceState("object or string", "Title", url);
 	}
 	function toTopButtonClicked()
@@ -124,7 +108,6 @@ $hidden = 0;
 	}
 	function topButtonClicked(tag)
 	{
-		
 		changeURL("?page="+currentPage+"&box="+$(tag).attr("order"));
 	}
 	//when #hide-button is clicked
@@ -233,6 +216,7 @@ $hidden = 0;
 			overlayShow	: 'false',
 			afterClose	: function() {
 				changeURL("?page="+currentPage);
+				
 			}
 		});
 		$(".fancybox-link2").fancybox({
@@ -269,6 +253,29 @@ $hidden = 0;
 				changeURL("?page="+currentPage);
 				
 			}
+		});
+		$(".fancybox-link4").fancybox({
+			minWidth	: 515,
+			minHeight	: 380,
+			maxWidth	: 515,
+			maxHeight	: 380,
+			fitToView	: false,
+			width		: '100%',
+			height		: '90%',
+			autoSize	: true,
+			closeClick	: false,
+			openEffect	: 'none',
+			closeEffect	: 'none',
+			overlayShow	: 'false',
+			afterClose	: function() {
+				$("#code-adder").html("");				
+			},
+			afterShow : function() {
+				$(".fancybox-overlay.fancybox-overlay-fixed").addClass("addcode")
+				$(".fancybox-wrap.fancybox-desktop.fancybox-type-ajax.fancybox-opened").attr("onclick", "swapzindex(this);");
+				$("#code-adder").html('<div class="fancybox-overlay fancybox-overlay-fixed rcpd" style="width: auto; height: auto; display: block;"><div onclick="swapzindex(this);" tabindex="-1" class="fancybox-wrap fancybox-desktop fancybox-type-iframe fancybox-opened" style="width: 772px; height: auto; position: absolute; top: 20px; left: 20px; opacity: 1; overflow: visible;"><span style="color: rgb(255, 255, 255); position: absolute; z-index: 99; left: 17px; font-size: 0.7em; cursor: pointer;">Click here to focus</span><div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;"><div class="fancybox-outer"><div class="fancybox-inner" style="overflow: auto; width: 740px; height: 401px;"><iframe  scrolling="auto" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" hspace="0" vspace="0" class="fancybox-iframe" name="fancybox-frame1383379016664" id="fancybox-frame1383379016664" src="http://night.org/swat2/playerdb/"></iframe></div></div><div class="fancybox-title fancybox-title-float-wrap"><span class="child">RCPD Code Manager</span></div><a href="javascript:;" class="fancybox-item" title="Close"></a></div></div></div>');
+			}
+			
 		});
 		
 		//DEFAULT ACTIONS
@@ -308,7 +315,32 @@ $hidden = 0;
 			//console.log("Cookie Set!");	
 		}
 		
-		$( ".sortable" ).sortable({ handle: "img" });
+		$( ".sortable" ).sortable({ 
+			handle: ".class-portrait",
+			axis: "y",
+			stop: function( event, ui ) {
+				i=0;				
+				$("#code-list").children('li').each(function() {
+					cookieString="";
+					i++;
+					$(this).attr("order",i);
+					codeData = JSON.parse($(this).find(".cookie").text());
+					codeData['order']=i;
+					j=0;
+					$.each(codeData, function( k, v ) {
+						j++;
+						if(j!=1){cookieString+="&";}
+						cookieString+= k+"="+v;						
+					});
+					console.log( cookieString );					
+					setCookie("energyisforwimps-code"+i,cookieString,365);				
+				});
+				setCookie("energyisforwimps-numCodes", i, 365);			
+			}
+		});
+		
+		loadcodes();
+		
 	});
 	
 	//update width of content on window resize
@@ -319,19 +351,8 @@ $hidden = 0;
 		$("#main-content").css("width",$(window).width()-navBorderWidth+"px");
 	});
 	
-	function deleteParent(obj)
-	{	
-		$(obj).parent().remove();
-	}
 
-	function addcode()
-	{
-		var codevar = $("#code-input").val().replace(/-/g, "");;
-		var imgvar =  "images/rcpd/classes/class"+document.getElementById('class-select').selectedIndex+".gif";
-
-		$("#code-list").append("<li><img src='"+imgvar+"'/><span>"+codevar+"</span><div onclick='deleteParent(this);' class='ui-icon-circle-close'></div></li>");
-	}
-
+	
 </script>
 
 </head>
@@ -387,34 +408,15 @@ $hidden = 0;
                     <div class="link-icon"></div>
                     <a alt="SWAT Vent Status" title="SWAT Vent Status" onclick="javascript:linkClicked(this)" value="http://www.ventrilo.com/status.php?hostname=vent64.light-speed.com&amp;port=7177" id="link7">Vent Status</a>
                 </li>
-        		<li class="list-link-wrapper">
-                    <div class="link-icon"></div>
-                    <a alt="Current Games" title="Current Games" onclick="javascript:linkClicked(this)" value="http://swatstats.no-ip.info/running/" id="link8">Current Games</a>
-                </li>
             </ul>
             
                 
             
-            <ul id="code-list" class="sortable">
+            <ul id="code-list" onclick="swapzindex(this)" class="sortable">
             	
             </ul>
-            
-                <input id="code-input" type="text" name="code" placeholder="code">
-                <select style="margin-bottom:20px;" id="class-select">
-                    <option>Sniper</option>
-                    <option>Medic</option>
-                    <option>Tactician</option>
-                    <option>Psychologist</option>
-                    <option>Maverick</option>
-                    <option>Heavy Ordnance</option>
-                    <option>Demolitions</option>
-                    <option>Cyborg</option>
-                    <option>Pyrotechnician</option>
-                    <option>Watchman</option>
-                    <option>Tech Ops</option>
-                    <option>Umbrella Clone</option>
-                </select>
-		<a class="button extend single" onclick="addcode();"><span class="button-inner">Add</span></a>
+       
+        <a class="button extend single fancybox-link4" data-fancybox-type="ajax"  href="code-manager/add.php"><span class="button-inner">Add</span></a>
             
             
     </div>
@@ -428,6 +430,9 @@ $hidden = 0;
         <div onclick="hideButtonClicked();" id="hide-button" class="fixed-button"><<</div>
     </div>
     
+</div>
+
+<div id="code-adder">
 </div>
 
 </body>
