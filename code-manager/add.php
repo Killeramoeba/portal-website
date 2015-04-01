@@ -7,58 +7,37 @@
 <link rel="stylesheet" type="text/css" href="css/addcode.css" />
 </head>
 <body>
-<script>
-function selectItem(a){
-	img = a.children().children('img');
-	input = $("#addcode input[name='"+img.attr("inputname")+"']");
-	if( img.css("margin") == "1px" ){
-		input.val(img.attr("activevalue"));
-	}else if(img.css("margin") == "0px"){
-		input.val(input.attr("defaultvalue"));
-	}
-}
-
-function selectMedal(a){	
-	img = a.children().children('img');
-	input = img.next();
-	if( img.css("margin") == "1px" ){
-		input.val(input.attr("activevalue"));
-	}else if(img.css("margin") == "0px"){
-		input.val(input.attr("defaultvalue"));
-	}
-}
-</script>
 	<div id="popup-wrapper">
     	<p>Click anywhere and hold to drag.</p>
     	<form id="addcode">
     	<div class="row-wrapper">
         	
             <div id="class" class= "itemRow">
-                <?php for ($i=0;$i<11;$i++){ ?>	
-                    <a href="javascript: chooseItem('class',<?=$i?>);" onclick="selectItem($(this))">
+                <?php for ($i=0;$i<12;$i++){ ?>	
+                    <a onclick="chooseItemForManager('class',<?=$i?>,$(this));" >
                         <div class="img">
                         	<img src="images/rcpd/classes/class<?=$i?>.gif" activevalue="<?=$i?>" inputname="class" />
                         </div>
                     </a>
                 <?php } ?>
-                <input type="hidden" name="class" value="11" defaultvalue="11" >
+                <input type="hidden" name="class" value="12" defaultvalue="12" >
             </div>
             
             <div id="gun" class= "itemRow">
-                <?php for ($i=0;$i<7;$i++){ ?>
-                    <a href="javascript: chooseItem('gun',<?=$i?>);" onclick="selectItem($(this))">
+                <?php for ($i=0;$i<8;$i++){ ?>
+                    <a onclick="chooseItemForManager('gun',<?=$i?>,$(this));" >
                         <div class="img">
                         	<img src="images/rcpd/guns/gun<?=$i?>.gif" activevalue="<?=$i?>" inputname="gun" />
                         </div>
                     </a>
                 <?php } ?>
-                <input type="hidden" name="gun" value="7" defaultvalue="7" >
+                <input type="hidden" name="gun" value="8" defaultvalue="8" >
             </div>
         
             
             <div id="armor" class= "itemRow">
                 <?php for ($i=0;$i<4;$i++){ ?>
-                    <a href="javascript: chooseItem('armor',<?=$i?>);" onclick="selectItem($(this))">
+                    <a onclick="chooseItemForManager('armor',<?=$i?>,$(this));" >
                         <div class="img">
                             <img src="images/rcpd/armor/armor<?=$i?>.gif" activevalue="<?=$i?>" inputname="armor" />                            
                         </div>
@@ -72,7 +51,7 @@ function selectMedal(a){
         
             <div id="trait" class= "itemRow">
                 <?php for ($i=0;$i<16;$i++){ ?>
-                    <a href="javascript: chooseItem('trait',<?=$i?>);" onclick="selectItem($(this))">
+                    <a onclick="chooseItemForManager('trait',<?=$i?>,$(this));" >
                         <div class="img">
                         	<img src="images/rcpd/trait/trait<?=$i?>.gif" activevalue="<?=$i?>" inputname="trait" />                            
                         </div>
@@ -83,7 +62,7 @@ function selectMedal(a){
             
             <div id="spec" class= "itemRow">
                 <?php for ($i=0;$i<9;$i++){ ?>
-                    <a href="javascript: chooseItem('spec',<?=$i?>);" onclick="selectItem($(this))">
+                    <a onclick="chooseItemForManager('spec',<?=$i?>,$(this));" >
                         <div class="img">
                         	<img src="images/rcpd/spec/spec<?=$i?>.gif" activevalue="<?=$i?>" inputname="spec" />                            
                         </div>
@@ -94,7 +73,7 @@ function selectMedal(a){
 
             <div id="talent" class= "itemRow">
                 <?php for ($i=0;$i<7;$i++){ ?>
-                    <a href="javascript: chooseItem('talent',<?=$i?>);" onclick="selectItem($(this))">
+                    <a onclick="chooseItemForManager('talent',<?=$i?>,$(this));" >
                         <div class="img">
                         	<img src="images/rcpd/talent/talent<?=$i?>.gif" activevalue="<?=$i?>" inputname="talent" />                            
                         </div>
@@ -109,7 +88,7 @@ function selectMedal(a){
 
             <div id="medal" class= "itemRow">
 				<?php for ($i=0;$i<6;$i++){ ?>
-                    <a href="javascript: chooseItem('medal',<?=$i?>);" onclick="selectMedal($(this));">
+                    <a onclick="chooseItemForManager('medal',<?=$i?>,$(this),'medal');" >
                         <div class="img">
                             <img src="images/rcpd/medals/medal<?=$i?>.gif" />
                             <input type="hidden" name="medal<?=$i?>" value="6" defaultvalue="6" activevalue="<?=$i?>" >
@@ -119,7 +98,7 @@ function selectMedal(a){
             </div>
             <div id="title" class= "itemRow">
                 <?php for ($i=0;$i<7;$i++){ ?>
-                    <a href="javascript: chooseItem('title',<?=$i?>);" onclick="selectMedal($(this));">
+                    <a onclick="chooseItemForManager('title',<?=$i?>,$(this),'title');" >
                         <div class="img">
                             <img src="images/rcpd/titles/title<?=$i?>.gif" />
                             <input type="hidden" name="title<?=$i?>" value="7" defaultvalue="7" activevalue="<?=$i?>" >
@@ -128,7 +107,7 @@ function selectMedal(a){
                 <?php } ?>
             </div>
             <div class= "itemRow">
-            	<input id="code-input" type="text" name="code" placeholder="code">
+            	<input id="code-input" type="text" name="code" placeholder="code" onblur="$(this).val( jQuery.trim($(this).val()).replace(/-/g,'') );">
             </div>
             <input type="hidden" name="order" value="0" >
             <script>
@@ -138,7 +117,7 @@ function selectMedal(a){
         </form>
         <div class="row-wrapper last">        	
             <div id="submit-wrapper">
-            	<a onclick="processCookie(addCode($('form#addcode').serialize()))" class="button extend single"><span class="button-inner">OK</span></a>
+            	<a onclick="var t=$('form#addcode').serialize();myCodes.addCodeHTML(t);myCodes.addCodeCookie(t);" class="button extend single"><span class="button-inner">OK</span></a>
             </div>
         </div>
         </div>

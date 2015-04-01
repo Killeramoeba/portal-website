@@ -24,6 +24,7 @@ $box = isset($_GET["box"])? $_GET["box"]:0;
 $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
 ?>
 <script>
+    var myCodes;
 	var isMobile = {
 		Android: function() {
 			return navigator.userAgent.match(/Android/i);
@@ -272,8 +273,7 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
 			},
 			afterShow : function() {
 				$(".fancybox-overlay.fancybox-overlay-fixed").addClass("addcode").draggable();
-				$(".fancybox-wrap.fancybox-desktop.fancybox-type-ajax.fancybox-opened").attr("onclick", "swapzindex(this);");
-				$("#code-adder").html('<div class="draggable fancybox-overlay fancybox-overlay-fixed rcpd" style="width: auto; height: auto; display: block;"><div onclick="swapzindex(this);" tabindex="-1" class="fancybox-wrap fancybox-desktop fancybox-type-iframe fancybox-opened" style="width: 772px; height: auto; position: absolute; top: 20px; left: 20px; opacity: 1; overflow: visible;"><span style="color: rgb(255, 255, 255);position: absolute;z-index: 99;font-size: 1.4em;cursor: pointer;height: 28px;padding: 10px 20px;background-color: #333;border: 1px solid #555;border-radius: 5px;">Click and hold to drag</span><div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;"><div class="fancybox-outer"><div class="fancybox-inner" style="overflow: auto; width: 740px; height: 401px;"><iframe  scrolling="auto" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" hspace="0" vspace="0" class="fancybox-iframe" name="fancybox-frame1383379016664" id="fancybox-frame1383379016664" src="http://night.org/swat2/playerdb/"></iframe></div></div><div class="fancybox-title fancybox-title-float-wrap"><span class="child">RCPD Code Manager</span></div><a href="javascript:;" class="fancybox-item" title="Close"></a></div></div></div>');
+				$("#code-adder").html('<div class="draggable fancybox-overlay fancybox-overlay-fixed rcpd" style="width: auto; height: auto; display: block;"><div tabindex="-1" class="fancybox-wrap fancybox-desktop fancybox-type-iframe fancybox-opened" style="width: 772px; height: auto; position: absolute; top: 20px; left: 20px; opacity: 1; overflow: visible;"><span style="color: rgb(255, 255, 255);position: absolute;z-index: 99;font-size: 1.4em;cursor: pointer;height: 28px;padding: 10px 20px;background-color: #333;border: 1px solid #555;border-radius: 5px;">Click and hold to drag</span><div class="fancybox-skin" style="padding: 15px; width: auto; height: auto;"><div class="fancybox-outer"><div class="fancybox-inner" style="overflow: auto; width: 740px; height: 401px;"><iframe  scrolling="auto" frameborder="0" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" hspace="0" vspace="0" class="fancybox-iframe" name="fancybox-frame1383379016664" id="fancybox-frame1383379016664" src="http://night.org/swat2/playerdb/"></iframe></div></div><div class="fancybox-title fancybox-title-float-wrap"><span class="child">RCPD Code Manager</span></div><a href="javascript:;" class="fancybox-item" title="Close"></a></div></div></div>');
 				$( ".draggable" ).draggable();
 			}
 			
@@ -315,31 +315,12 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
 			$("#rcpd-button").prop("href","http://night.org/swat2/playerdb/?user="+getCookie("energyisforwimps-rcpdUsername")+"&pw="+getCookie("energyisforwimps-rcpdPassword"));
 		}
 		
-		$( ".sortable" ).sortable({ 
-			handle: ".class-portrait",
-			axis: "y",
-			stop: function( event, ui ) {
-				i=0;				
-				$("#code-list").children('li').each(function() {
-					cookieString="";
-					i++;
-					$(this).attr("order",i);
-					codeData = JSON.parse($(this).find(".cookie").text());
-					codeData['order']=i;
-					j=0;
-					$.each(codeData, function( k, v ) {
-						j++;
-						if(j!=1){cookieString+="&";}
-						cookieString+= k+"="+v;						
-					});				
-					setCookie("energyisforwimps-code"+i,cookieString,365);				
-				});
-				setCookie("energyisforwimps-numCodes", i, 365);			
-			}
-		});
-		
-		loadcodes();
-		
+
+
+        myCodes = new codeStore($( "#code-list" ));
+
+
+
 	});
 	
 	//update width of content on window resize
@@ -385,7 +366,7 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
                 </li>
                 <li class="list-link-wrapper">
                     <div class="link-icon"></div>
-                    <a alt="Clan 151 Forum" title="Clan 151 Forum" onclick="javascript:linkClicked(this)" value="http://energyisforwimps.getdanny.com/forum/" id="link2">151</a>
+                    <a alt="Clan 151 Forum" title="Clan 151 Forum" onclick="javascript:linkClicked(this)" value="http://151.amoebaone.com/" id="link2">151</a>
                 </li>
                 <li class="list-link-wrapper">
                     <div class="link-icon"></div>
@@ -411,7 +392,7 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
             
                 
             
-            <ul id="code-list" onclick="swapzindex(this)" class="sortable">
+            <ul id="code-list">
             	
             </ul>
        

@@ -1,0 +1,49 @@
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/cookies.js"></script>
+<script type="text/javascript" src="codes.js"></script>
+<script>
+    var classes=["Sniper","Medic","Tactician","Psychologist","Maverick","Heavy Ordinance","Demolitions","Cyborg","Pyrotechnician","Watchman","Tech Ops","Umbrella Clone"];
+    var weapons=["Assault Rifle","Sniper Rifle","Chaingun","Rocket Launcher","Flamethrower","Laser Rifle","Gattling Laser","Dual Pistols"];
+    var armors=["Light","Medium","Heavy","Advanced"];
+    var traits=["Skilled","Gifted","Survivalist","Dragoon","Acrobat","Swift Learner","Healer","Flower Child","Chem Reliant","Rad Resistant","Gadgeteer","Prowler","Energizer","Pack Rat","Engineer","Reckless"];
+    var specs=["Weaponry","Power Armor","Energy Cells","Cybernetics","Triage","Chemistry","Leadership","Robotics","Espionage"];
+    var talents=["Courage","Wiring","Running","Spotting","Toughness","Tinkering","Hacking"];
+    var medals=['REM','LSA','COB','PCC','MOH','KEY','---'];
+    var titles=['Honorguard','Nightmare','Extinction','Megazilla','Deathless','Impressive','Solo','---']
+
+    myCodes = new codeStore();
+    delete myCodes.cookieObject.length;
+    document.write("=======================================================");
+    $.each(myCodes.cookieObject, function( index, element ) {
+        document.write("<br>");
+        document.write("<br>");
+        cookie = getCookie("energyisforwimps-code"+index);
+        cookie = cookie.split("/");
+        document.write(classes[cookie[0]]+"/");
+        document.write(weapons[cookie[1]]+"/");
+        document.write(armors[cookie[2]]+"/");
+        document.write(traits[cookie[3]]+"/");
+        document.write(specs[cookie[4]]+"/");
+        document.write(talents[cookie[5]]);
+        document.write("<br>");
+        document.write(medals[cookie[11]]+"/");
+        document.write(medals[cookie[10]]+"/");
+        document.write(medals[cookie[9]]+"/");
+        document.write(medals[cookie[8]]+"/");
+        document.write(medals[cookie[7]]+"/");
+        document.write(medals[cookie[6]]);
+        document.write("<br>");
+        document.write(titles[cookie[12]]+"/");
+        document.write(titles[cookie[13]]+"/");
+        document.write(titles[cookie[14]]+"/");
+        document.write(titles[cookie[15]]+"/");
+        document.write(titles[cookie[16]]+"/");
+        document.write(titles[cookie[17]]+"/");
+        document.write(titles[cookie[18]]);
+        document.write("<br>");
+        document.write(myCodes.cookieObject[index]['code'].substring(0, 4)+"-"+myCodes.cookieObject[index]['code'].substring(4, 8)+"-"+myCodes.cookieObject[index]['code'].substring(8, 12)+"-"+myCodes.cookieObject[index]['code'].substring(12, 16));
+        document.write("<br>");
+        document.write("<br>");
+        document.write("=======================================================");
+    });
+</script>

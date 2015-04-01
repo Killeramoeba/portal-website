@@ -1,0 +1,10 @@
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/cookies.js"></script>
+<script type="text/javascript" src="codes.js"></script>
+<script>
+    myCodes = new codeStore();
+    delete myCodes.cookieObject.length;
+ $.each(myCodes.cookieObject, function( index, element ) {
+     document.write(unescape(element.cookiedata)+";");
+  });
+</script>

@@ -1,0 +1,21 @@
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/cookies.js"></script>
+<script type="text/javascript" src="code-manager/codes.js"></script>
+<script>
+    var myCodes = new codeStore();
+
+    function importCodes(val,obj){
+        if(val.indexOf(";") > -1){
+            myCodes.addCodeCookie(val);
+            $("#codedata-textarea").attr("disabled","disabled");
+            obj.text('Codes Imported');
+            obj.attr("onclick","");
+            obj.css("cursor","default");
+        }
+    }
+</script>
+
+
+<textarea id="codedata-textarea" rows="25" cols="150"></textarea>
+<br /><br />
+<a style="cursor:pointer;border:1px solid #333;background-color:#dfdfdf;padding:5px 10px;" onclick="importCodes($('#codedata-textarea').val(),$(this));">import codes</a>
