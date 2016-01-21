@@ -3,7 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Settings</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/popup.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/cookies.js"></script>
 
 </head>
 

@@ -86,34 +86,16 @@ html, body
 	margin-bottom:10px;
 }
 
-#nav .list-link-wrapper:nth-child(1) .link-icon
+#nav .list-link-wrapper .redsculls-forum.link-icon
 {
 	background-image: url("../images/reds-icon.png");
 }
-#nav .list-link-wrapper:nth-child(2) .link-icon
+#nav .list-link-wrapper .forum-151.link-icon
 {
 	background-image: url("../images/151-icon.png");
 }
-#nav .list-link-wrapper:nth-child(3) .link-icon
-{
-	background-image: url("../images/xlr8-icon.png");
-}
-#nav .list-link-wrapper:nth-child(4) .link-icon
-{
-	background-image: url("../images/chile-icon.png");
-}
-#nav .list-link-wrapper:nth-child(5) .link-icon
-{
-	background-image: url("../images/wiki-icon.gif");
-}
-#nav .list-link-wrapper:nth-child(6) .link-icon {
-    background-image: url("../images/web-ico.gif");
-}
-#nav .list-link-wrapper:nth-child(7) .link-icon {
+#nav .list-link-wrapper .vent-status.link-icon {
     background-image: url("../images/vent-icon.png");
-}
-#nav .list-link-wrapper:nth-child(8) .link-icon {
-    background-image: url("../images/alice-icon.png");
 }
 
 #button-wrapper

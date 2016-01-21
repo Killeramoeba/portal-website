@@ -190,6 +190,16 @@ function codeStore(codeList){
      *
      * ******************************/
     this.addCodeHTML = function(serializedForm){
+
+        var codelist;
+        if ($("#code-list").length){
+            codelist = $("#code-list");
+        }else{
+            codelist = $(window.parent.document.getElementById('code-list'));
+        }
+
+        //console.log(serializedForm)
+
         if(typeof serializedForm === 'object' ){
             serializedForm = "codes="+JSON.stringify(serializedForm);
         }
@@ -198,9 +208,11 @@ function codeStore(codeList){
                 "code-manager/code.php",
                 serializedForm
             ).done(function( data ) {
-                $("#code-list").append(data);
-                $("#code-list li").unbind('mouseenter mouseleave');
-                $("#code-list li").hover(
+
+                codelist.append(data);
+
+                codelist.children("li").unbind('mouseenter mouseleave');
+                codelist.children("li").hover(
                     function(){
                         $(this).children(".class-info").addClass( "hover" );
                     }, function() {
