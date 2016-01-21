@@ -192,10 +192,6 @@ border-radius:25px;
 {
 	display:block !important;
 }
-.mobile-hide-button
-{
-	width:50% !important;
-}
 
 @-webkit-keyframes greenPulse {
 from { -webkit-box-shadow: 0 0 20px 2px #00dd00; }
