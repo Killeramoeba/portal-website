@@ -127,7 +127,7 @@ border-radius:25px;
     height: 30px;
     left: 0;
     position: fixed;
-    width: 50px;
+    width:50px;
 }
 .fixed-button
 {
@@ -136,16 +136,11 @@ border-radius:25px;
     float: left;
     height: 90%;
     text-align: center;
-    width: 50%;
 }
 .fixed-button:hover
 {
 	background-color:#5F9869;
 	cursor:pointer;
-}
-#to-top-button
-{
-	display:none;
 }
 #hide-button
 {
@@ -184,14 +179,7 @@ border-radius:25px;
 { 
 	height: inherit !important; 
 }
-.mobile-fixed-buttons-container 
-{ 
-	width:100px !important; 
-}
-.mobile-to-top-button
-{
-	display:block !important;
-}
+
 
 @-webkit-keyframes greenPulse {
 from { -webkit-box-shadow: 0 0 20px 2px #00dd00; }
