@@ -102,7 +102,7 @@ echo "</pre>";
                 <img class="titles" onclick="if($(this).attr('src')=='images/rcpd/titles/title7.gif'){$(this).attr('src','images/rcpd/titles/title<?php echo $j ?>.gif')}else{$(this).attr('src','images/rcpd/titles/title7.gif')}myCodes.editCode($(this),$(this).parent().parent().parent(),$(this).attr('src').charAt($(this).attr('src').length-5),'title<?php echo $j ?>');" src="images/rcpd/titles/title<?php echo $title ?>.gif">
                 <?php $j++;endforeach; ?>
             </div>
-            <div onclick="myCodes.deleteCode(this);" class="ui-icon-circle-close" order="<?php echo $codenum ?>" ></div>
+            <div onclick="myCodes.deleteCode(this);" class="ui-icon-circle-close" ></div>
         </div>
         <span style="display:none;" class="cookie"><?php echo isset($cookieData)?json_encode($cookieData):stringToJSON($codes[$i]['cookiedata']); ?></span>
     </li>
