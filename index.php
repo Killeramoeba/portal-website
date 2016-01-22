@@ -171,7 +171,7 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
                 <a title="Settings" alt="Settings" onclick="javascript:topButtonClicked(this);" order="2" class="button" id="settings-button" value="settings.php" >
                     <div id="settings-button-inner" class="button-inner icon"></div>  
                 </a>
-                <a class="button extend single" value="curl-codes.php" order="3" onclick="javascript:topButtonClicked(this);"><span class="button-inner">&nbsp;+&nbsp;</span></a>
+                <a class="button extend single" value="add-codes.php" order="3" onclick="javascript:topButtonClicked(this);"><span class="button-inner">&nbsp;+&nbsp;</span></a>
             </div>
 
 

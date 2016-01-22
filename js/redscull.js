@@ -1,30 +1,7 @@
 var colCur = 0;
 var colMax = 1;
 var colSize = '32%';
-var colSpce = '2%';
 rowHighlight = false;
-
-var codes= [];
-function addCode(code,hero,gun,armor,trait,spec,talent,key,moh,pcc,cob,lsa,rem,titles){
-
-    var element = [];
-    element.code = code;
-    element.hero = hero;
-    element.gun = gun;
-    element.armor = armor;
-    element.trait = trait;
-    element.spec = spec;
-    element.talent = talent;
-    element.key = key;
-    element.moh = moh;
-    element.pcc = pcc;
-    element.cob = cob;
-    element.lsa = lsa;
-    element.rem = rem;
-    element.titles=titles;
-    codes.push(element);
-}
-
 
 function WriteHeroPlain(name, code, rank, diff, hero, gun, armor, trait, spec, talent, key, moh, pcc, cob, lsa, rem, titles, heroname, index) {
 
@@ -47,29 +24,6 @@ function WriteHeroPlain(name, code, rank, diff, hero, gun, armor, trait, spec, t
     WriteDbRowPlain(HeroIcon(hero,rank,diff), config, index);
 }
 
-function WriteHero(name, code, rank, diff, hero, gun, armor, trait, spec, talent, key, moh, pcc, cob, lsa, rem, titles, heroname) {
-
-    addCode(code,hero,gun,armor,trait,spec,talent,key,moh,pcc,cob,lsa,rem,titles);
-
-    var config = CfgIcon('gun',gun)+CfgIcon('armor',armor)+CfgIcon('trait',trait)+CfgIcon('spec',spec)+CfgIcon('talent',talent);
-    config = config + '<br>' + MedalIcon('key',key)+MedalIcon('moh',moh)+MedalIcon('pcc',pcc)+MedalIcon('cob',cob)+MedalIcon('lsa',lsa)+MedalIcon('rem',rem)
-    if (code != '') {
-        //maintenance mode
-        config = config + TitleIcons(titles);
-        config = config + '<br> ' + wrapCode(code, '&nbsp;' + DeleteHeroLink(heroname));
-    } else {
-        //public listing
-        if (titles == '1') {
-            config = config + TitleIcon(0, true);
-        }
-        config = config + '<br>';
-    }
-    if (name != '') {
-        config = config + '<font size=-1 color=ffe888>"'+ name +'"</font>';
-    }
-    WriteDbRow(HeroIcon(hero,rank,diff), config);
-}
-
 function WriteDbRowPlain(icon, data, index) {
     if (icon == '') {
         icon = PlayerIconEmpty();
@@ -80,25 +34,6 @@ function WriteDbRowPlain(icon, data, index) {
     }
     colCur = colCur + 1;
     rowData = rowData + '<div class="code-wrapper" index="'+index+'" ><div class="table-cell" align=right>'+icon+'</div><div class="table-cell" width='+colSize+'>' + data + '</div></div>';
-    if (colCur < colMax) {
-        //rowData = rowData + '<div class="table-cell" width='+colSpce+'></div>';
-    } else {
-        //rowData = rowData + '</div></div>';
-        WriteOldRow('',rowData);
-        colCur = 0;
-    }
-}
-
-function WriteDbRow(icon, data) {
-    if (icon == '') {
-        icon = PlayerIconEmpty();
-        data = '&nbsp';
-    }
-    if (colCur == 0) {
-        rowData = '';//'<div class="table" cellpadding=0 cellspacing=0 border=0 width=100%><div class="table-row" valign=top>';
-    }
-    colCur = colCur + 1;
-    rowData = rowData + '<div class="code-wrapper" ><div class="table-cell" align=right>'+icon+'</div><div class="table-cell" width='+colSize+'>' + data + '</div></div>';
     if (colCur < colMax) {
         //rowData = rowData + '<div class="table-cell" width='+colSpce+'></div>';
     } else {
@@ -135,48 +70,11 @@ function HintGun(val) {
     return '';
 }
 
-function LinkCfg(name, val) {
-    if (name == 'class') { return LinkClass(val); }
-    if (name == 'gun') { return LinkGun(val); }
-    if (name == 'armor') { return LinkArmor(val); }
-    if (name == 'trait') { return linkBase+'readmeaftertraits.html'; }
-    if (name == 'spec') { return linkBase+'readmeafterspecs.html'; }
-    if (name == 'talent') { return linkBase+'readmeaftertalents.html'; }
-    return linkBase;
-}
 
-function LinkGun(val) {
-    var link = '';
-    if (val == 0) { link = 'wassault'; } else
-    if (val == 1) { link = 'wsniper'; } else
-    if (val == 2) { link = 'wchain'; } else
-    if (val == 3) { link = 'wrocket'; } else
-    if (val == 4) { link = 'wflame'; } else
-    if (val == 5) { link = 'wrifle'; } else
-    if (val == 6) { link = 'wgatling'; } else
-    if (val == 7) { link = 'wpistol'; } else
-    { return linkBase+'readmeafterweapons.html'; }
-    return linkBase+'readmeafterweapons.html#'+link;
-}
 
-var linkBase = 'http://redscull.com/swat/';
-function LinkClass(hero) {
-    var link = '';
-    if (hero =='a'){ link = 'tech'; } else
-    if (hero =='b'){ link = 'umbclone'; } else
-    if (hero == 0) { link = 'sniper'; } else
-    if (hero == 1) { link = 'medic'; } else
-    if (hero == 2) { link = 'tact'; } else
-    if (hero == 3) { link = 'psy'; } else
-    if (hero == 4) { link = 'mav'; } else
-    if (hero == 5) { link = 'hvyord'; } else
-    if (hero == 6) { link = 'demo'; } else
-    if (hero == 7) { link = 'cyborg'; } else
-    if (hero == 8) { link = 'pyro'; } else
-    if (hero == 9) { link = 'watchman'; } else
-    { return linkBase+'readmeafterclasses.html'; }
-    return linkBase+'classinfo-'+link+'.htm';
-}
+
+
+
 
 function HintArmor(val) {
     if (val == 0) { return 'Light'; }
@@ -186,15 +84,7 @@ function HintArmor(val) {
     return '';
 }
 
-function LinkArmor(val) {
-    var link = '';
-    if (val == 0) { link = 'Compact'; } else
-    if (val == 1) { link = 'Standard'; } else
-    if (val == 2) { link = 'Large'; } else
-    if (val == 3) { link = 'Large'; } else
-    { return linkBase+'readmeafterarmor.html'; }
-    return linkBase+'readmeafterarmor.html#'+link;
-}
+
 
 function HintTrait(val) {
     if (val == 0) { return 'Skilled'; }
@@ -384,12 +274,5 @@ function WriteOldRow(Name, Description) {
     var lite = '';
     if (rowHighlight) { lite = ' bgcolor=202020'; }
     rowHighlight = !rowHighlight;
-    //document.writeln('<div class="table-row"'+lite+' valign=top><div class="table-cell" width=5>&nbsp;</div><div class="table-cell" align=right width=1%><b>'+Name+'</b></div><div class="table-cell" width=10>&nbsp;</div><div class="table-cell">');
-
-
-    //document.writeln(Description);
     $(".code-list").append(Description);
-
-    //document.writeln('</div></div>');
-    //document.writeln('<div class="table-row"'+lite+' height=5><div class="table-cell"></div><div class="table-cell"></div><div class="table-cell"></div><div class="table-cell"></div></div>');
 }

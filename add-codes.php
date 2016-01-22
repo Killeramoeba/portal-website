@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1"/>
     <title>Energy is for Wimps</title>
 
     <style>
@@ -265,22 +265,46 @@
 
 
 <div class="code-list">
-<?php
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "http://night.org/swat2/playerdb/?user=".$_COOKIE['energyisforwimps-rcpdUsername']."&pw=".$_COOKIE['energyisforwimps-rcpdPassword']);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$output = curl_exec($ch);
-curl_close($ch);
-$pos1 = strpos($output, "WriteHero(");
-$pos2 = strrpos($output, "WriteHero(")+94;
-$output = substr($output, $pos1, $pos2-$pos1 );
-echo "<script>";
-echo $output;
-echo "</script>";
-?>
+
 </div>
 
 <script>
+
+
+
+    //set up code list
+    var codes= [];
+    function addCode(code,hero,gun,armor,trait,spec,talent,key,moh,pcc,cob,lsa,rem,titles){
+
+        var element = [];
+        element.code = code;
+        element.hero = hero;
+        element.gun = gun;
+        element.armor = armor;
+        element.trait = trait;
+        element.spec = spec;
+        element.talent = talent;
+        element.key = key;
+        element.moh = moh;
+        element.pcc = pcc;
+        element.cob = cob;
+        element.lsa = lsa;
+        element.rem = rem;
+        element.titles=titles;
+        codes.push(element);
+    }
+
+    //ajax
+    $.ajax({
+        url: "/code-manager/curl-codes.php",
+        cache: false
+    }).done(function( html ) {
+        jQuery.each(JSON.parse(html), function(k,v){
+            addCode(v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7],v[8],v[9],v[10],v[11],v[12],v[13]);
+        });
+        filterIt();
+    });
+
 
     $(document).click(function(e){
         if( e.target.id != 'show-filter-button' && e.target.id != 'filter-container' &&  !$(e.target).is('td') &&  !$(e.target).is('img') &&  !$(e.target).is('table') ) {
@@ -292,35 +316,7 @@ echo "</script>";
         $("#filter-container").show();
     });
 
-    //console.log(codes);
 
-    $( ".code-wrapper" ).hover(
-        function() {
-            $( this ).addClass( "hover" );
-        }, function() {
-            $( this ).removeClass( "hover" );
-        }
-    );
-
-    var myCodes = new codeStore();
-
-    $( ".code-wrapper" ).click(
-        function(){
-
-
-            code = codes[$(this).prevAll().length-1];
-            //console.log(code);
-
-            if(code.hero=="a")
-                code.hero=10;
-            else if(code.hero=="b")
-                code.hero=11;
-
-            serializedCode="class="+code.hero+"&gun="+code.gun+"&armor="+code.armor+"&trait="+code.trait+"&spec="+code.spec+"&talent="+code.talent+"&medal0="+(code["rem"]>=1?0:6)+"&medal1="+(code["lsa"]==1?1:6)+"&medal2="+(code["cob"]==1?2:6)+"&medal3="+(code["pcc"]==1?3:6)+"&medal4="+(code["moh"]==1?4:6)+"&medal5="+(code["key"]==1?5:6)+"&title0="+(code["titles"].substring(0,1)==1?0:7)+"&title1="+(code["titles"].substring(1,2)==1?1:7)+"&title2="+(code["titles"].substring(2,3)==1?2:7)+"&title3="+(code["titles"].substring(3,4)==1?3:7)+"&title4="+(code["titles"].substring(4,5)==1?4:7)+"&title5="+(code["titles"].substring(5,6)==1?5:7)+"&title6="+(code["titles"].substring(6,7)==1?6:7)+"&code="+code.code;
-            myCodes.addCodeHTML(serializedCode);
-            myCodes.addCodeCookie(serializedCode);
-        }
-    );
 
     $(function() {
         $( "#filter-container" ).draggable();
@@ -391,13 +387,12 @@ echo "</script>";
 
         });
 
-        //console.log(filtersArray);
 
         codesToShow = {};
 
         jQuery.each(codes,function(k,v){
             if (
-                    (v.hero == filtersArray[0].slice(-1) || filtersArray[0] == "" ) &&
+                (v.hero == filtersArray[0].slice(-1) || filtersArray[0] == "" ) &&
                     (v.gun == filtersArray[1].slice(-1) || filtersArray[1] == "" ) &&
                     (v.armor == filtersArray[2].slice(-1) || filtersArray[2] == "" ) &&
                     (v.trait == filtersArray[3].slice(5) || filtersArray[3] == "" ) &&
@@ -405,7 +400,7 @@ echo "</script>";
                     (v.talent == filtersArray[5].slice(-1) || filtersArray[5] == "" ) &&
                     (v[filtersArray[6].slice(0,3)] == filtersArray[6].slice(3) || filtersArray[6] == "" ) &&
                     (v.titles[filtersArray[7].slice(3,4)] == filtersArray[7].slice(4,5) || filtersArray[7] == "" )
-            ){
+                ){
 
                 codesToShow[k] = v;
             }
@@ -419,7 +414,6 @@ echo "</script>";
         jQuery.each(codesToShow,function(k,v){
             WriteHeroPlain('', v.code, "12", "4", v.hero, v.gun, v.armor, v.trait, v.spec, v.talent, v.key, v.moh, v.pcc, v.cob, v.lsa, v.rem, v.titles, v.code, k);
         });
-        //console.log($( ".code-wrapper" ));
 
 
         $( ".code-wrapper" ).hover(
@@ -430,13 +424,12 @@ echo "</script>";
             }
         );
 
-
+        var myCodes = new codeStore();
         $( ".code-wrapper" ).click(
             function(){
 
 
                 code = codes[$(this).attr("index")];
-                //console.log(code);
 
                 if(code.hero=="a")
                     code.hero=10;
@@ -457,8 +450,6 @@ echo "</script>";
             return size;
         };
 
-
-        //console.log(Object.size(codesToShow));
         $("#resultNum").text(Object.size(codesToShow));
     }
 
