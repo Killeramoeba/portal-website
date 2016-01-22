@@ -201,6 +201,7 @@ $output = explode( substr($output,1,1), $output );
         });
 
         $("#list-of-words").empty();
+        $("#list-of-words-leet").empty();
 
         console.log(getDict(checksum));
 
@@ -212,9 +213,20 @@ $output = explode( substr($output,1,1), $output );
         var obj = <?php echo json_encode($output); ?>;
         $.each(obj, function( k, v ) {
             if(getChecksum(v.substr(1))[0] == sum[0]){
-                console.log(v);
-                console.log(getChecksum(v)[0]);
+
+                //console.log(getChecksum(v)[0]);
                 $("#list-of-words").append("<li>"+v.substr(1)+"</li>");
+            }
+
+            v = v.replace("e","3").replace("t","7").replace("l","1").replace("a","4");
+
+            if(getChecksum(v.substr(1))[0] == sum[0]){
+
+                //console.log(getChecksum(v)[0]);
+                if( v.search("3") > 0 || v.search("7") > 0 || v.search("1") > 0 || v.search("4") > 0 ){
+                    $("#list-of-words-leet").append("<li>"+v.substr(1)+"</li>");
+                }
+
             }
         });
     }
@@ -224,7 +236,7 @@ $output = explode( substr($output,1,1), $output );
 
 <body>
 <h1>Checksum Calculator</h1>
-<input type="text" id="name-input"><button onclick="updateResults('#name-input')" ></button>
+<input type="text" id="name-input"><button onclick="updateResults('#name-input')" >OK</button>
 <p id="result"></p>
 <p id="result2"></p>
 
@@ -243,7 +255,11 @@ $output = explode( substr($output,1,1), $output );
 
     <div id="differences-container"></div>
 
+    <h3>Dictionary matches</h3>
     <ul id="list-of-words"></ul>
+
+    <h3>Leet matches</h3>
+    <ul id="list-of-words-leet"></ul>
 
 
 
