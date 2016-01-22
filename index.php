@@ -195,11 +195,102 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
             <ul id="code-list">
             	
             </ul>
-       
 
-            
-            
-    </div>
+            <script>
+                function downloadCodes(filename, text) {
+                    var classes=["Sniper","Medic","Tactician","Psychologist","Maverick","Heavy Ordinance","Demolitions","Cyborg","Pyrotechnician","Watchman","Tech Ops","Umbrella Clone"];
+                    var weapons=["Assault Rifle","Sniper Rifle","Chaingun","Rocket Launcher","Flamethrower","Laser Rifle","Gattling Laser","Dual Pistols"];
+                    var armors=["Light","Medium","Heavy","Advanced"];
+                    var traits=["Skilled","Gifted","Survivalist","Dragoon","Acrobat","Swift Learner","Healer","Flower Child","Chem Reliant","Rad Resistant","Gadgeteer","Prowler","Energizer","Pack Rat","Engineer","Reckless"];
+                    var specs=["Weaponry","Power Armor","Energy Cells","Cybernetics","Triage","Chemistry","Leadership","Robotics","Espionage"];
+                    var talents=["Courage","Wiring","Running","Spotting","Toughness","Tinkering","Hacking"];
+                    var medals=['REM','LSA','COB','PCC','MOH','KEY','---'];
+                    var titles=['Honorguard','Nightmare','Extinction','Megazilla','Deathless','Impressive','Solo','---']
+
+                    myCodes2 = myCodes;
+                    var mystring = "";
+                    delete myCodes2.cookieObject.length;
+                    mystring += ("=======================================================");
+                    $.each(myCodes2.cookieObject, function( index, element ) {
+                        mystring += ("\r\n");
+                        mystring += ("\r\n");
+                        cookie = getCookie("energyisforwimps-code"+index);
+                        cookie = cookie.split("/");
+                        mystring += (classes[cookie[0]]+"/");
+                        mystring += (weapons[cookie[1]]+"/");
+                        mystring += (armors[cookie[2]]+"/");
+                        mystring += (traits[cookie[3]]+"/");
+                        mystring += (specs[cookie[4]]+"/");
+                        mystring += (talents[cookie[5]]);
+                        mystring += ("\r\n");
+                        mystring += (medals[cookie[11]]+"/");
+                        mystring += (medals[cookie[10]]+"/");
+                        mystring += (medals[cookie[9]]+"/");
+                        mystring += (medals[cookie[8]]+"/");
+                        mystring += (medals[cookie[7]]+"/");
+                        mystring += (medals[cookie[6]]);
+                        mystring += ("\r\n");
+                        mystring += (titles[cookie[12]]+"/");
+                        mystring += (titles[cookie[13]]+"/");
+                        mystring += (titles[cookie[14]]+"/");
+                        mystring += (titles[cookie[15]]+"/");
+                        mystring += (titles[cookie[16]]+"/");
+                        mystring += (titles[cookie[17]]+"/");
+                        mystring += (titles[cookie[18]]);
+                        mystring += ("\r\n");
+                        mystring += (myCodes2.cookieObject[index]['code'].substring(0, 4)+"-"+myCodes2.cookieObject[index]['code'].substring(4, 8)+"-"+myCodes2.cookieObject[index]['code'].substring(8, 12)+"-"+myCodes2.cookieObject[index]['code'].substring(12, 16));
+                        mystring += ("\r\n");
+                        mystring += ("\r\n");
+                        mystring += ("=======================================================");
+                    });
+
+                    text = mystring;
+
+                    var element = document.createElement('a');
+                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                    element.setAttribute('download', filename);
+
+                    element.style.display = 'none';
+                    document.body.appendChild(element);
+
+                    element.click();
+
+                    document.body.removeChild(element);
+                }
+
+                function downloadBackup(filename, text) {
+
+                    myCodes2 = myCodes;
+                    var mystring = "";
+                    delete myCodes2.cookieObject.length;
+                    $.each(myCodes2.cookieObject, function( index, element ) {
+                        mystring+= ""+(unescape(element.cookiedata)+";");
+                    });
+
+                    text = mystring;
+
+                    var element = document.createElement('a');
+                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                    element.setAttribute('download', filename);
+
+                    element.style.display = 'none';
+                    document.body.appendChild(element);
+
+                    element.click();
+
+                    document.body.removeChild(element);
+                }
+
+
+            </script>
+            <button onclick="downloadCodes('swat-codes.txt', 'test')">Download Text</button>
+
+            <button onclick="downloadBackup('swat-codes-export.txt', 'test')">export</button>
+            <a href="import-codes.html"><button >import</button></a>
+
+
+
+        </div>
         
     <div id="main-content">
         <iframe frameborder="0" id="main-content-portal" src=""></iframe>
