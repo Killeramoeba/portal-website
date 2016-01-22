@@ -297,7 +297,7 @@ function codeStore(codeList){
     //takes in x button
     this.deleteCode = function(button)
     {
-        var order = $(button).attr('order');
+        var order = $(button).parent().parent().attr('order');
         var liObj = this.codeList.children("li:nth-child("+order+")");
 
         var oldNumCodes = this.cookieObject.length;
@@ -320,6 +320,8 @@ function codeStore(codeList){
 
         //update object
         this.cookieObject = getCodesFromCookies();
+
+        save();
     }
 
     this.cookieObject = getCodesFromCookies();
