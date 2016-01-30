@@ -149,7 +149,7 @@ function codeStore(codeList){
             codes[i] = temp[i];
         }
         codes['length'] = i-1;
-        console.log(codes);
+        //console.log(codes);
         return codes;
     }
 
@@ -228,7 +228,7 @@ function codeStore(codeList){
 
     this.addCodeCookie = function(cookie){
         var numCodes = this.cookieObject.length;
-        console.log(cookie);
+        //console.log(cookie);
         if(cookie.indexOf(";") > -1){
             var cookie = cookie.split(";");
             delete cookie[cookie.length-1];

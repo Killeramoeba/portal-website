@@ -36,6 +36,8 @@
     $pos1 = strpos($output, "WriteHero(");
     $pos2 = strrpos($output, "WriteHero(")+94;
     $output = substr($output, $pos1, $pos2-$pos1 );
+    $output = str_replace(",08,", ",8,", $output);
+$output = str_replace(",09,", ",9,", $output);
     eval ($output);
     echo json_encode($codes);
 ?>

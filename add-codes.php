@@ -300,6 +300,7 @@
         cache: false
     }).done(function( html ) {
         jQuery.each(JSON.parse(html), function(k,v){
+            //console.log(html);
             addCode(v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7],v[8],v[9],v[10],v[11],v[12],v[13]);
         });
         filterIt();
@@ -390,7 +391,10 @@
 
         codesToShow = {};
 
+
         jQuery.each(codes,function(k,v){
+            //console.log(filtersArray[3].slice(5));
+            //console.log(v);
             if (
                 (v.hero == filtersArray[0].slice(-1) || filtersArray[0] == "" ) &&
                     (v.gun == filtersArray[1].slice(-1) || filtersArray[1] == "" ) &&
@@ -403,7 +407,9 @@
                 ){
 
                 codesToShow[k] = v;
+
             }
+            //console.log(codesToShow);
 
         });
 
