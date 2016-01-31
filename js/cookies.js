@@ -44,4 +44,6 @@ function saveSettingsCookies()
 	
 	$("#settings-form").hide();
 	$("#settings-message").show();
+
+    parent.location.reload();
 }

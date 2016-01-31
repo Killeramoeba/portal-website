@@ -10,7 +10,7 @@
     <script type="text/javascript" src="js/cookies.js"></script>
 
 </head>
-
+<form>
 <body>
 	<div id="popup-wrapper">
         <h1>Settings</h1>
@@ -24,6 +24,7 @@
          <p style="display:none;" id="settings-message">Your RCPD username and Password have already been saved. Click <a href="javascript:eraseCookies();">here</a> to delete your RCPD credentials.</p>
     </div>
 </body>
+</form>
 </html>
 
 <script>
