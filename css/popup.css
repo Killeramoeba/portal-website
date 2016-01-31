@@ -1,7 +1,13 @@
 h1, h3, p
 {
 	color:#fff;
+    text-align:center;
 }
+
+html, body{
+    background:#000;
+}
+
 #popup-wrapper
 {
 	font-family:arial;

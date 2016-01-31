@@ -165,7 +165,7 @@ $hidden = isset($_GET["hidden"])? $_GET["hidden"]:0;
     	<div id="nav-wrapper">
             <h4 style="color: rgb(255, 255, 255); text-align: center; background-color: rgb(18, 52, 86); border: 1px solid rgb(0, 0, 0); box-shadow: 1px 1px 0px 0px rgb(0, 0, 0); padding: 5px 0px; margin: 0px;">Swat: Aftermath<br>Gateway</h4>
             <div id="button-wrapper">
-                <a title="RCPD Code Manager" alt="RCPD Code Manager" onclick="javascript:topButtonClicked(this);" order="1"  id="rcpd-button" class="button" value="http://night.org/swat2/playerdb/">
+                <a title="RCPD Code Manager" alt="RCPD Code Manager" onclick="javascript:topButtonClicked(this);" order="1"  id="rcpd-button" class="button" value="log-in.html">
                             <div id="rcpd-button-inner" class="button-inner icon"></div>
                 </a>
                 <a title="Settings" alt="Settings" onclick="javascript:topButtonClicked(this);" order="2" class="button" id="settings-button" value="settings.php" >
