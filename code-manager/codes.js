@@ -199,6 +199,7 @@ function codeStore(codeList){
         }
 
         //console.log(serializedForm)
+        //console.log(codelist);
 
         if(typeof serializedForm === 'object' ){
             serializedForm = "codes="+JSON.stringify(serializedForm);
@@ -224,10 +225,11 @@ function codeStore(codeList){
 
             });
 
+
     }
 
     this.addCodeCookie = function(cookie){
-        var numCodes = this.cookieObject.length;
+        var numCodes = getCookie("energyisforwimps-numCodes");
         //console.log(cookie);
         if(cookie.indexOf(";") > -1){
             var cookie = cookie.split(";");

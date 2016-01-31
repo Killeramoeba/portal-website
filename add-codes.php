@@ -442,7 +442,16 @@
                 else if(code.hero=="b")
                     code.hero=11;
 
-                serializedCode="class="+code.hero+"&gun="+code.gun+"&armor="+code.armor+"&trait="+code.trait+"&spec="+code.spec+"&talent="+code.talent+"&medal0="+(code["rem"]>=1?0:6)+"&medal1="+(code["lsa"]==1?1:6)+"&medal2="+(code["cob"]==1?2:6)+"&medal3="+(code["pcc"]==1?3:6)+"&medal4="+(code["moh"]==1?4:6)+"&medal5="+(code["key"]==1?5:6)+"&title0="+(code["titles"].substring(0,1)==1?0:7)+"&title1="+(code["titles"].substring(1,2)==1?1:7)+"&title2="+(code["titles"].substring(2,3)==1?2:7)+"&title3="+(code["titles"].substring(3,4)==1?3:7)+"&title4="+(code["titles"].substring(4,5)==1?4:7)+"&title5="+(code["titles"].substring(5,6)==1?5:7)+"&title6="+(code["titles"].substring(6,7)==1?6:7)+"&code="+code.code+"&order="+getCookie("energyisforwimps-numCodes")+1;
+                var order;
+                if(getCookie("energyisforwimps-numCodes") >= 0){
+                    order = parseInt(parseFloat(getCookie("energyisforwimps-numCodes"))+1);
+                }
+                else{
+                    setCookie("energyisforwimps-numCodes","1",365);
+                    order=1;
+                }
+
+                serializedCode="class="+code.hero+"&gun="+code.gun+"&armor="+code.armor+"&trait="+code.trait+"&spec="+code.spec+"&talent="+code.talent+"&medal0="+(code["rem"]>=1?0:6)+"&medal1="+(code["lsa"]==1?1:6)+"&medal2="+(code["cob"]==1?2:6)+"&medal3="+(code["pcc"]==1?3:6)+"&medal4="+(code["moh"]==1?4:6)+"&medal5="+(code["key"]==1?5:6)+"&title0="+(code["titles"].substring(0,1)==1?0:7)+"&title1="+(code["titles"].substring(1,2)==1?1:7)+"&title2="+(code["titles"].substring(2,3)==1?2:7)+"&title3="+(code["titles"].substring(3,4)==1?3:7)+"&title4="+(code["titles"].substring(4,5)==1?4:7)+"&title5="+(code["titles"].substring(5,6)==1?5:7)+"&title6="+(code["titles"].substring(6,7)==1?6:7)+"&code="+code.code+"&order="+order;
                 myCodes.addCodeHTML(serializedCode);
                 myCodes.addCodeCookie(serializedCode);
             }
