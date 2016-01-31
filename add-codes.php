@@ -75,13 +75,13 @@
 
 
 
-
+<!--
 <center><font size="-1" color="ffe888">
         <a href="http://night.org/swat2/playerdb/index.php?p=view">VIEW</a> |
         <a href="http://night.org/swat2/playerdb/index.php">PLAYER</a> |
         <a href="http://night.org/swat2/playerdb/index.php?p=gen">BUILD</a>
     </font>&nbsp;</center>
-
+-->
 
 
 <button id="show-filter-button">Filter</button>
